@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <input type="text" @input="getData($event.target.value)">
     <template v-if="pokemonList">
       <div v-for="(pokemon, index) in pokemonList.results" :key="index">
           <poke-cards :pokemon="pokemon"/>
@@ -16,7 +17,8 @@ const App = {
   name: "app",
   data() {
     return {
-      pokemonList: null
+      pokemonList: null,
+      msg: ""
     };
   },
   mounted() {

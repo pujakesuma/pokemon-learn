@@ -1,7 +1,7 @@
 <template>
   <div>
     <img v-bind:src="showPokemonImage(pokemon.url)"/>
-    <p>{{ pokemon.name }}</p>
+    <p>{{ capitalizedFirstName(pokemon.name) }}</p>
   </div>
 </template>
 
@@ -18,6 +18,9 @@ let Cards = {
       let id = uri.split("/")[uri.split("/").length - 2];
       let imageUri = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
       return imageUri;
+    },
+    capitalizedFirstName(name) {
+      return name[0].toUpperCase() + name.slice(1)
     }
   }
 };
