@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :ref="pokemon.name">
     <img v-bind:src="showPokemonImage(pokemon.url)"/>
     <p>{{ capitalizedFirstName(pokemon.name) }}</p>
   </div>
@@ -7,7 +7,7 @@
 
 <script>
 let Cards = {
-  props: ["pokemon"],
+  props: ["pokemon","section"],
   data() {
     return {
         title: null

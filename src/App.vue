@@ -1,48 +1,54 @@
 <template>
   <div id="app">
-    <input type="text" @input="getData($event.target.value)">
+    <input ref="start" type="text" @keyup.enter="search" />
     <template v-if="pokemonList">
-      <div v-for="(pokemon, index) in pokemonList.results" :key="index">
-          <poke-cards :pokemon="pokemon"/>
-      </div>
+      <template v-for="(pokemon, index) in pokemonList.results">
+        <poke-cards :pokemon="pokemon" :key="index"></poke-cards>
+      </template>
     </template>
+    <button @click="goToTop">^</button>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import Cards from "./components/Cards.vue"
+import Cards from "./components/Cards.vue";
+import Service from "./services/getdata.js";
+
+const Services = new Service();
 
 const App = {
   name: "app",
   data() {
     return {
-      pokemonList: null,
-      msg: ""
+      pokemonList: null
     };
   },
   mounted() {
     this.getData();
   },
   methods: {
-    getData(pokemon = "pokemon") {
-      let uri = process.env.VUE_APP_API_URI;
-      let params = {
-        offset: 0,
-        limit: 20
-      };
-      axios
-        .get(uri + pokemon, { params })
+    getData() {
+      Services.getPokemonList()
         .then(res => {
-          if (res.status === 200) {
-            this.pokemonList = res.data;
+          console.log(res);
+          if (res.status === 200){
+            this.pokemonList = res.data
           }
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          console.log(err)
+        });
+    },
+    search(event) {
+      console.log(event);
+    },
+    goToTop() {
+      // console.log(this.$refs);
+      this.$refs.start.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   },
   components: {
-      'poke-cards': Cards
+    "poke-cards": Cards
   }
 };
 
