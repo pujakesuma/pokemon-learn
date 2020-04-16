@@ -1,9 +1,10 @@
-import { App, Home, User } from './index'
+import { Home, User, NotFound } from './index'
 import VueRouter from 'vue-router'
 
 const routes = [
-  { path: '/', component: Home},
-  { path: '/user/:user', component: User}
+  { path: '/', component: Home, name: 'home'},
+  { path: '/user/:user', component: User, name: 'user'},
+  { path: '*', component: NotFound}
 ]
   
 const router = new VueRouter({
@@ -11,4 +12,4 @@ const router = new VueRouter({
   routes
 })
 
-export { App, router }
+export default router;
