@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Cards from "./Cards.vue";
+import Cards from "../components/Cards";
 import Service from "../services/getdata.js";
 
 const Services = new Service();

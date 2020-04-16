@@ -1,8 +1,9 @@
-import { App, Home } from './index'
+import { App, Home, User } from './index'
 import VueRouter from 'vue-router'
 
 const routes = [
-  { path: '/', component: Home}
+  { path: '/', component: Home},
+  { path: '/user/:user', component: User}
 ]
   
 const router = new VueRouter({
