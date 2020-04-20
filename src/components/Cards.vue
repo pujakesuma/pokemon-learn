@@ -35,6 +35,19 @@ export default Cards;
   border-radius: 10px;
   margin: 0 10px 10px 10px;
   transition: 0.2s;
+  width: 200px;
+}
+
+@media only screen and (max-width: 460px) {
+  .card {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .card {
+    width: 200px;
+  }
 }
 
 .card:hover {

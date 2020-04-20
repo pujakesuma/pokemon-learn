@@ -6,9 +6,6 @@
         <poke-cards :pokemon="pokemon" :key="index"></poke-cards>
       </template>
     </div>
-    <div>
-      <button @click="goToTop">^</button>
-    </div>
   </div>
 </template>
 
@@ -43,10 +40,6 @@ const Home = {
     },
     search(event) {
       console.log(event);
-    },
-    goToTop() {
-      // console.log(this.$refs);
-      this.$refs.start.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   },
   components: {

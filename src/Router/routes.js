@@ -2,8 +2,8 @@ import { Home, User, NotFound } from './index'
 import VueRouter from 'vue-router'
 
 const routes = [
-  { path: '/', component: Home, name: 'home'},
-  { path: '/user/:user', component: User, name: 'user'},
+  { path: '/', component: Home, name:'home'},
+  { path: '/user/:user', component: User, name:'user'},
   { path: '*', component: NotFound}
 ]
   
