@@ -1,12 +1,14 @@
 <template>
   <div id="home">
-    <input ref="start" type="text" @keyup.enter="search" />
-    <template v-if="pokemonList">
+    <!-- <input ref="start" type="text" @keyup.enter="search" /> -->
+    <div v-if="pokemonList" class="card-list">
       <template v-for="(pokemon, index) in pokemonList.results">
         <poke-cards :pokemon="pokemon" :key="index"></poke-cards>
       </template>
-    </template>
-    <button @click="goToTop">^</button>
+    </div>
+    <div>
+      <button @click="goToTop">^</button>
+    </div>
   </div>
 </template>
 
@@ -59,5 +61,11 @@ export default Home;
 #home {
   text-align: center;
   margin-top: 60px;
+}
+
+.card-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 </style>

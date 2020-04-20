@@ -1,5 +1,5 @@
 <template>
-  <div :ref="pokemon.name">
+  <div :ref="pokemon.name" class="card">
     <img v-bind:src="showPokemonImage(pokemon.url)"/>
     <p>{{ capitalizedFirstName(pokemon.name) }}</p>
   </div>
@@ -29,5 +29,22 @@ export default Cards;
 </script>
 
 <style scoped>
+
+.card {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 0 10px 10px 10px;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translate(-2px);
+  box-shadow: 6px 4px 2px 0px grey;
+}
+
+.card:active {
+  transform: translate(0px);
+  box-shadow: 1px 1px 2px grey;
+}
 
 </style>
