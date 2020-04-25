@@ -5,7 +5,7 @@ class Service {
         this.token = token
     }
 
-    getPokemonList = (pokemon = "pokemon", offset = 0, limit = 0) => {
+    getPokemonList = (pokemon = "pokemon", offset = 0, limit = 40) => {
         let uri = process.env.VUE_APP_API_URI;
         let params = {
             offset,

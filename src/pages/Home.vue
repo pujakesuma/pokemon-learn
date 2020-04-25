@@ -1,12 +1,12 @@
 <template>
-  <div id="home">
-    <!-- <input ref="start" type="text" @keyup.enter="search" /> -->
-    <div v-if="pokemonList" class="card-list">
-      <template v-for="(pokemon, index) in pokemonList.results">
-        <poke-cards :pokemon="pokemon" :key="index"></poke-cards>
-      </template>
-    </div>
-  </div>
+	<div id="home">
+		<!-- <input ref="start" type="text" @keyup.enter="search" /> -->
+		<div v-if="pokemonList" class="card-list">
+			<template v-for="(pokemon, index) in pokemonList.results">
+				<poke-cards :pokemon="pokemon" :key="index"></poke-cards>
+			</template>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -16,35 +16,35 @@ import Service from "../services/getdata.js";
 const Services = new Service();
 
 const Home = {
-  name: "home",
-  data() {
-    return {
-      pokemonList: null
-    };
-  },
-  mounted() {
-    this.getData();
-  },
-  methods: {
-    getData() {
-      Services.getPokemonList()
-        .then(res => {
-          console.log(res);
-          if (res.status === 200){
-            this.pokemonList = res.data
-          }
-        })
-        .catch(err => {
-          console.log(err)
-        });
-    },
-    search(event) {
-      console.log(event);
-    }
-  },
-  components: {
-    "poke-cards": Cards
-  }
+	name: "home",
+	data() {
+		return {
+			pokemonList: null
+		};
+	},
+	mounted() {
+		this.getData();
+	},
+	methods: {
+		getData() {
+			Services.getPokemonList()
+				.then(res => {
+					console.log(res);
+					if (res.status === 200) {
+						this.pokemonList = res.data;
+					}
+				})
+				.catch(err => {
+					console.log(err);
+				});
+		},
+		search(event) {
+			console.log(event);
+		}
+	},
+	components: {
+		"poke-cards": Cards
+	}
 };
 
 export default Home;
@@ -52,13 +52,13 @@ export default Home;
 
 <style>
 #home {
-  text-align: center;
-  margin-top: 60px;
+	text-align: center;
+	margin-top: 60px;
 }
 
 .card-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 </style>
