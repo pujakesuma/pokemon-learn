@@ -1,30 +1,32 @@
 <template>
-  <div>
-    <img v-bind:src="showPokemonImage(pokemon.url)"/>
-    <p>{{ pokemon.name }}</p>
+  <div class="container">
+    <div class="card">
+      <img v-bind:src="showPokemonImage(pokemon.url)" />
+      <p>{{ pokemon.name }}</p>
+    </div>
   </div>
 </template>
 
 <script>
 let Cards = {
-  props: ["pokemon"],
+  props: ['pokemon'],
   data() {
     return {
-        title: null
-    }
+      title: null,
+    };
   },
   methods: {
     showPokemonImage(uri) {
-      let id = uri.split("/")[uri.split("/").length - 2];
+      let id = uri.split('/')[uri.split('/').length - 2];
       let imageUri = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
       return imageUri;
-    }
-  }
+    },
+  },
 };
 
 export default Cards;
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>
