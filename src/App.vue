@@ -23,24 +23,43 @@ const App = {
     this.getData();
   },
   methods: {
-    getData(pokemon = "pokemon") {
-      let uri = process.env.VUE_APP_API_URI;
-      let params = {
+    // getData(pokemon = "pokemon") {
+    //   let uri = process.env.VUE_APP_API_URI;
+    //   let params = {
+    //     offset: 0,
+    //     limit: 20
+    //   };
+    //   axios
+    //     .get(uri + pokemon, { params })
+    //     .then(res => {
+    //       if (res.status === 200) {
+    //         this.pokemonList = res.data;
+    //       }
+    //     })
+    //     .catch(err => console.log(err));
+    // }
+    async getData(pokemon) {
+      pokemon = 'pokemon'
+      const uri = process.env.VUE_APP_API_URI
+      const params = {
         offset: 0,
         limit: 20
-      };
-      axios
-        .get(uri + pokemon, { params })
-        .then(res => {
-          if (res.status === 200) {
-            this.pokemonList = res.data;
-          }
-        })
-        .catch(err => console.log(err));
+      }
+      try {
+        let data = await axios.get(uri + pokemon, {params})
+        return this.pokemonList = data.data
+      } catch (err) {
+        console.log(err);
+      }
     }
   },
   components: {
       'poke-cards': Cards
+  },
+  watch: {
+    pokemonList: function(val){
+      console.log('okok',val, this.pokemonList)
+    }
   }
 };
 
